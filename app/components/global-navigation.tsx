@@ -5,13 +5,32 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Container } from "./container";
 
-const navigationItems = [
-  { href: "/", label: "Home" },
-  { href: "/activities", label: "Activities" },
-  { href: "/hackathon", label: "Hackathon" },
-  { href: "/about", label: "About" },
+const navigation = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/#about" },
+  { label: "Activities", href: "/#activities" },
+  { label: "Hackathon", href: "/#hackathon" },
+  { label: "Leaderboard", href: "/leaderboard" },
+  { label: "Challenges", href: "/challenges" },
+  { label: "XP System", href: "/xp-system" },
+  { label: "GitHub" , href:"https://github.com/DBCE-Coders-Club"}
 ] as const;
-
+{navigation.map((item) => (
+  <Link
+    key={item.label}
+    href={item.href}
+    className="transition-colors hover:text-accent"
+  >
+    {item.label}
+  </Link>
+))}
+/*<a 
+  href="https://github.com/DBCE-Coders-Club"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="transition-colors hover:text-accent"
+>GitHub ↗
+</a>*/
 export function GlobalNavigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -45,7 +64,7 @@ export function GlobalNavigation() {
 
         <nav aria-label="Primary navigation" className="relative">
           <ul className="hidden items-center gap-1 sm:flex">
-            {navigationItems.map((item) => {
+            {navigation.map((item) => {
               const isCurrentPage = pathname === item.href;
 
               return (
@@ -97,7 +116,7 @@ export function GlobalNavigation() {
               className="absolute right-0 top-full z-20 mt-3 w-52 rounded-card border border-border bg-background p-2 shadow-[0_12px_32px_rgb(21_21_19_/_0.08)] sm:hidden"
             >
               <ul>
-                {navigationItems.map((item) => {
+                {navigation.map((item) => {
                   const isCurrentPage = pathname === item.href;
 
                   return (

@@ -120,6 +120,7 @@ export default function Home() {
   
 
       {/* MISSION */}
+      <section id="about">
       <section id="mission" className="editorial-section two-column-section">
         <div>
           <p className="eyebrow">WHO WE ARE</p>
@@ -141,7 +142,7 @@ export default function Home() {
           </p>
         </div>
       </section>
-
+</section>
       
       {/* THREE PILLARS */}
 <section className="editorial-section pillars-section">
@@ -212,6 +213,7 @@ export default function Home() {
 </div>
   </section>
 <OpenChallenges />
+<section id="hackathon">
       {/* HACKATHON */}
       <section className="dark-panel two-column-section">
         <div>
@@ -253,8 +255,9 @@ export default function Home() {
           </Link>
         </div>
       </section>
-
+</section>
       {/* BEYOND */}
+      <section id="activities">
       <section className="editorial-section two-column-section">
         <div>
           <p className="eyebrow">WHAT COMES NEXT</p>
@@ -293,7 +296,7 @@ export default function Home() {
           </article>
         </div>
       </section>
-
+</section>
    {/* XP */}
       <section className="dark-panel xp-panel">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-20">
