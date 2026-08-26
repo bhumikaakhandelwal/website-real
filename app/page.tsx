@@ -296,19 +296,64 @@ export default function Home() {
 
    {/* XP */}
       <section className="dark-panel xp-panel">
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow light-eyebrow">GAMIFIED LEARNING</p>
-            <h2>
-              Earn your
-              <span className="lime-text">place.</span>
-            </h2>
-          </div>
-          <p>
-            Learn, build, ship and earn points for your contribution to the
-            club.
-          </p>
-        </div>
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-20">
+  {/* LEFT */}
+  <div>
+    <p className="label-eyebrow text-muted-foreground mb-6">
+      GAMIFIED LEARNING
+    </p>
+
+    <h2 className="font-display text-7xl font-medium leading-[0.85] tracking-tight text-white md:text-8xl lg:text-9xl">
+      Earn your
+      <br />
+      <span className="text-lime-400">place.</span>
+    </h2>
+  </div>
+
+  {/* RIGHT */}
+  <div className="flex flex-col justify-center">
+    <p className="max-w-2xl font-display text-3xl font-medium leading-tight text-white md:text-4xl lg:text-5xl">
+      Learn, build, ship and earn points for your contribution to the club.
+    </p>
+
+    {/* Four paths */}
+    <div className="mt-10 grid grid-cols-2 border-t border-white/20 md:grid-cols-4">
+      
+      <div className="border-r border-white/20 px-5 py-6 first:pl-0">
+        <div className="mb-5 text-3xl text-accent">◈</div>
+        <h3 className="text-lg font-semibold text-white">Learn</h3>
+        <p className="mt-3 text-sm leading-relaxed text-white/60">
+          Attend workshops, sessions and level up your skills.
+        </p>
+      </div>
+
+      <div className="border-r border-white/20 px-5 py-6">
+        <div className="mb-5 text-3xl text-accent">&lt;/&gt;</div>
+        <h3 className="text-lg font-semibold text-white">Build</h3>
+        <p className="mt-3 text-sm leading-relaxed text-white/60">
+          Work on projects, solve challenges and create impact.
+        </p>
+      </div>
+
+      <div className="border-r border-white/20 px-5 py-6">
+        <div className="mb-5 text-3xl text-accent">↗</div>
+        <h3 className="text-lg font-semibold text-white">Ship</h3>
+        <p className="mt-3 text-sm leading-relaxed text-white/60">
+          Deploy your ideas and contribute to real-world solutions.
+        </p>
+      </div>
+
+      <div className="px-5 py-6 last:pr-0">
+        <div className="mb-5 text-3xl text-accent">☆</div>
+        <h3 className="text-lg font-semibold text-white">Earn</h3>
+        <p className="mt-3 text-sm leading-relaxed text-white/60">
+          Gain XP, climb the leaderboard and earn your place.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
 
         <div className="xp-cards">
           {leaderboard.map(([rank, name, xp], index) => (
