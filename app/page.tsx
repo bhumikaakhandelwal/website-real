@@ -9,13 +9,6 @@ export const metadata: Metadata = {
     "The official website of DBCE Coders Club at Don Bosco College of Engineering.",
 };
 
-const council = [
-  ["01", "President", "Rituraj Patil"],
-  ["02", "Vice President", "Basil Shaikh"],
-  ["03", "Secretary", "Aryan Vishwakarma"],
-  ["04", "Treasurer", "Angelica Pereira"],
-  ["05", "Internal Affairs", "Bhumika Khandelwal"],
-];
 
 const leaderboard = [
   ["01", "Sania Suleman", "7,500 XP"],
@@ -124,7 +117,7 @@ export default function Home() {
     ))}
   </div>
 </div>
-  <OpenChallenges />
+  
 
       {/* MISSION */}
       <section id="mission" className="editorial-section two-column-section">
@@ -149,44 +142,60 @@ export default function Home() {
         </div>
       </section>
 
+      
       {/* THREE PILLARS */}
-      <section className="editorial-section pillars-section">
-        <div className="section-label">
-          <p className="eyebrow">THE APPROACH</p>
-          <h2>Four pillars.</h2>
-        </div>
+<section className="editorial-section pillars-section">
+  <div className="section-label">
+    <p className="eyebrow">THE APPROACH</p>
+    <h2>Three pillars.</h2>
 
-        <div className="editorial-list">
-          <article>
-            <small>01</small>
-            <div>
-              <h3>Build</h3>
-              <p>Turn ideas into real projects, systems, and working prototypes.</p>
-            </div>
-          </article>
-          <article>
-            <small>02</small>
-            <div>
-              <h3>Break</h3>
-              <p>Challenge assumptions, experiment boldly, and solve problems creatively.</p>
-            </div>
-          </article>
-          <article>
-            <small>03</small>
-            <div>
-              <h3>Learn</h3>
-              <p>Explore new technologies, skills, and concepts through hands-on learning.</p>
-            </div>
-          </article>
-          <article>
-            <small>04</small>
-            <div>
-              <h3>Deploy</h3>
-              <p>Take projects beyond development and bring them into the real world.</p>
-            </div>
-          </article>
-        </div>
-      </section>
+    <p className="section-description">
+      Focus on learning through building.
+    </p>
+    <div className="mt-12 max-w-sm border-l-2 border-accent pl-6">
+  <p className="text-2xl font-display italic leading-relaxed md:text-3xl">
+    “We don’t just learn technology. We build with it,
+    solve real problems, and compete to grow.”
+  </p>
+
+  <p className="mt-5 font-mono text-xs uppercase tracking-widest text-muted-foreground">
+    — DBCE Coders Club
+  </p>
+</div>
+  </div>
+
+  <div className="editorial-list">
+    <article>
+      <small>01</small>
+      <div>
+        <h3>Explore</h3>
+        <p>
+          Students discover advanced tools and technologies.
+        </p>
+      </div>
+    </article>
+
+    <article>
+      <small>02</small>
+      <div>
+        <h3>Build</h3>
+        <p>
+          Students build real systems and prototypes.
+        </p>
+      </div>
+    </article>
+
+    <article>
+      <small>03</small>
+      <div>
+        <h3>Compete</h3>
+        <p>
+          Students participate in national-level hackathons.
+        </p>
+      </div>
+    </article>
+  </div>
+  </section>
 <OpenChallenges />
       {/* HACKATHON */}
       <section className="dark-panel two-column-section">
@@ -270,34 +279,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* COUNCIL */}
-      <section className="editorial-section">
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow">THE PEOPLE BEHIND IT</p>
-            <h2>
-              Current
-              <span>Council.</span>
-            </h2>
-          </div>
-          <p>
-            Organisers, enablers and fellow students building the conditions
-            for good work.
-          </p>
-        </div>
-
-        <div className="council-grid">
-          {council.map(([number, role, name]) => (
-            <article key={name}>
-              <small>{number}</small>
-              <span>{role}</span>
-              <strong>{name}</strong>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {/* XP */}
+   {/* XP */}
       <section className="dark-panel xp-panel">
         <div className="section-heading">
           <div>

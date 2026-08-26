@@ -24,7 +24,7 @@ const challenges = [
 
 export function OpenChallenges() {
   return (
-    <section className="px-page py-section">
+    <section className="px-page pt-4 pb-20">
       <div className="mx-auto max-w-content">
 
         {/* Heading */}

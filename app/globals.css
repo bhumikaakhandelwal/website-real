@@ -14,7 +14,7 @@
   --content-width: 92rem;
   --nav-height: 4.5rem;
   --space-page: clamp(1.25rem, 4vw, 4.75rem);
-  --space-section: clamp(5rem, 11vw, 10rem);
+  --space-section: clamp(3.5rem, 7vw, 6rem);
   --radius-card-value: 999px;
   --radius-panel-value: 1.4rem;
   --type-display: clamp(4rem, 9vw, 9rem);
@@ -315,7 +315,7 @@ a {
 .pillars-section {
   display: grid;
   grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  gap: clamp(3rem, 8vw, 9rem);
+  gap: clamp(3rem, 6vw, 6rem);
   padding-top: 0;
 }
 
