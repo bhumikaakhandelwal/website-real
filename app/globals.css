@@ -1,26 +1,87 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fdfdfc;
+  --foreground: #151513;
+  --muted: #6d6b67;
+  --border: #e6e5e1;
+  --surface: #f5f4f1;
+  --accent: #c4491c;
+  --accent-text: #a93c17;
+
+  --content-width: 80rem;
+  --nav-height: 4.5rem;
+  --space-page: clamp(1.25rem, 3vw, 3rem);
+  --space-section: clamp(4rem, 12vw, 9rem);
+  --radius-card-value: 1rem;
+  --radius-panel-value: 1.5rem;
+  --type-display: clamp(3rem, 8vw, 7rem);
+  --leading-display-value: 0.95;
+  --motion-duration: 180ms;
+  --motion-ease: cubic-bezier(0.2, 0, 0, 1);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-surface: var(--surface);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+
+  --spacing-page: var(--space-page);
+  --spacing-section: var(--space-section);
+  --radius-card: var(--radius-card-value);
+  --radius-panel: var(--radius-panel-value);
+  --text-display: var(--type-display);
+  --leading-display: var(--leading-display-value);
+  --ease-standard: var(--motion-ease);
+  --duration-standard: var(--motion-duration);
+
+  --container-content: var(--content-width);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: var(--foreground);
+  color: #ffffff;
+}
+
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :where(a, button, input, select, textarea) {
+    transition-duration: var(--motion-duration);
+    transition-timing-function: var(--motion-ease);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
