@@ -240,7 +240,7 @@ a {
 }
 
 .animate-marquee {
-  animation: marquee-x 20s linear infinite;
+  animation: marquee-x 10s linear infinite;
   will-change: transform;
 }
 .word-strip-track {
