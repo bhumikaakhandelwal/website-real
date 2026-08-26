@@ -1,6 +1,7 @@
 import { constants } from "buffer";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { OpenChallenges } from "./components/open-challanges";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -123,7 +124,7 @@ export default function Home() {
     ))}
   </div>
 </div>
-  
+  <OpenChallenges />
 
       {/* MISSION */}
       <section id="mission" className="editorial-section two-column-section">
