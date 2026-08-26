@@ -187,7 +187,7 @@ export default function Home() {
           </article>
         </div>
       </section>
-
+<OpenChallenges />
       {/* HACKATHON */}
       <section className="dark-panel two-column-section">
         <div>
