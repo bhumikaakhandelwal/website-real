@@ -1,12 +1,21 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Container } from "./container";
+
+const navigationItems = [
+  { href: "/", label: "Home" },
+  { href: "/activities", label: "Activities" },
+  { href: "/hackathon", label: "Hackathon" },
+  { href: "/about", label: "About" },
+] as const;
 
 export function GlobalNavigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     if (!isMenuOpen) {
@@ -35,15 +44,26 @@ export function GlobalNavigation() {
         </Link>
 
         <nav aria-label="Primary navigation" className="relative">
-          <ul className="hidden items-center gap-6 sm:flex">
-            <li>
-              <Link
-                href="/"
-                className="text-sm text-muted hover:text-foreground"
-              >
-                Home
-              </Link>
-            </li>
+          <ul className="hidden items-center gap-1 sm:flex">
+            {navigationItems.map((item) => {
+              const isCurrentPage = pathname === item.href;
+
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    aria-current={isCurrentPage ? "page" : undefined}
+                    className={`rounded-card px-3 py-2 text-sm font-medium ${
+                      isCurrentPage
+                        ? "bg-surface text-foreground"
+                        : "text-muted hover:bg-surface hover:text-foreground"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
 
           <button
@@ -77,15 +97,26 @@ export function GlobalNavigation() {
               className="absolute right-0 top-full z-20 mt-3 w-52 rounded-card border border-border bg-background p-2 shadow-[0_12px_32px_rgb(21_21_19_/_0.08)] sm:hidden"
             >
               <ul>
-                <li>
-                  <Link
-                    href="/"
-                    className="block rounded-[calc(var(--radius-card)-0.25rem)] px-3 py-2 text-sm text-foreground hover:bg-surface"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Home
-                  </Link>
-                </li>
+                {navigationItems.map((item) => {
+                  const isCurrentPage = pathname === item.href;
+
+                  return (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        aria-current={isCurrentPage ? "page" : undefined}
+                        className={`block rounded-[calc(var(--radius-card)-0.25rem)] px-3 py-2 text-sm font-medium ${
+                          isCurrentPage
+                            ? "bg-surface text-foreground"
+                            : "text-muted hover:bg-surface hover:text-foreground"
+                        }`}
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           )}

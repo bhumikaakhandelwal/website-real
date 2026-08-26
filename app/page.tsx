@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
+import Link from "next/link";
 import { Container } from "./components/container";
 import { PillarList } from "./components/pillar-list";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description:
+    "The official website of DBCE Coders Club at Don Bosco College of Engineering.",
+};
 
 export default function Home() {
   return (
@@ -46,7 +54,15 @@ export default function Home() {
                 Three pillars.
               </h2>
             </div>
-            <PillarList />
+            <div>
+              <PillarList />
+              <Link
+                href="/about"
+                className="mt-7 inline-flex min-h-10 items-center rounded-card border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-surface"
+              >
+                About the club
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -71,48 +87,56 @@ export default function Home() {
               </p>
             </div>
 
-            <ol className="border-y border-background/20">
-              <li className="grid gap-5 border-b border-background/20 py-8 sm:grid-cols-[3rem_minmax(0,1fr)] sm:gap-8 sm:py-10">
-                <span
-                  className="font-mono text-xs text-background/60"
-                  aria-hidden="true"
-                >
-                  01
-                </span>
-                <article>
-                  <h3 className="text-2xl font-semibold tracking-[-0.04em] sm:text-3xl">
-                    Phase One — In-Campus Challenge
-                  </h3>
-                  <p className="mt-3 max-w-xl text-base leading-7 text-background/70">
-                    Teams of 2–3 work on carefully designed problem statements.
-                    Their work is evaluated by ambassadors, internal faculty,
-                    and external experts, with the top 15–20 teams qualifying
-                    for the final phase.
-                  </p>
-                </article>
-              </li>
-              <li className="grid gap-5 py-8 sm:grid-cols-[3rem_minmax(0,1fr)] sm:gap-8 sm:py-10">
-                <span
-                  className="font-mono text-xs text-background/60"
-                  aria-hidden="true"
-                >
-                  02
-                </span>
-                <article>
-                  <h3 className="text-2xl font-semibold tracking-[-0.04em] sm:text-3xl">
-                    Phase Two — Offshore Event
-                  </h3>
-                  <p className="mt-3 max-w-xl text-base leading-7 text-background/70">
-                    A 24-hour hackathon where teams select real-world problem
-                    statement tracks and compete to build the best prototype
-                    solution. Campfire coding sessions and technical chats
-                    support the experience, while winning teams may have the
-                    opportunity to continue building toward real industry
-                    deployment.
-                  </p>
-                </article>
-              </li>
-            </ol>
+            <div>
+              <ol className="border-y border-background/20">
+                <li className="grid gap-5 border-b border-background/20 py-8 sm:grid-cols-[3rem_minmax(0,1fr)] sm:gap-8 sm:py-10">
+                  <span
+                    className="font-mono text-xs text-background/60"
+                    aria-hidden="true"
+                  >
+                    01
+                  </span>
+                  <article>
+                    <h3 className="text-2xl font-semibold tracking-[-0.04em] sm:text-3xl">
+                      Phase One — In-Campus Challenge
+                    </h3>
+                    <p className="mt-3 max-w-xl text-base leading-7 text-background/70">
+                      Teams of 2–3 work on carefully designed problem statements.
+                      Their work is evaluated by ambassadors, internal faculty,
+                      and external experts, with the top 15–20 teams qualifying
+                      for the final phase.
+                    </p>
+                  </article>
+                </li>
+                <li className="grid gap-5 py-8 sm:grid-cols-[3rem_minmax(0,1fr)] sm:gap-8 sm:py-10">
+                  <span
+                    className="font-mono text-xs text-background/60"
+                    aria-hidden="true"
+                  >
+                    02
+                  </span>
+                  <article>
+                    <h3 className="text-2xl font-semibold tracking-[-0.04em] sm:text-3xl">
+                      Phase Two — Offshore Event
+                    </h3>
+                    <p className="mt-3 max-w-xl text-base leading-7 text-background/70">
+                      A 24-hour hackathon where teams select real-world problem
+                      statement tracks and compete to build the best prototype
+                      solution. Campfire coding sessions and technical chats
+                      support the experience, while winning teams may have the
+                      opportunity to continue building toward real industry
+                      deployment.
+                    </p>
+                  </article>
+                </li>
+              </ol>
+              <Link
+                href="/hackathon"
+                className="mt-8 inline-flex min-h-10 items-center rounded-card border border-background/25 px-4 py-2 text-sm font-medium text-background hover:bg-background/10"
+              >
+                Explore the hackathon
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -132,33 +156,41 @@ export default function Home() {
               </p>
             </div>
 
-            <ul className="border-y border-border">
-              <li className="grid gap-3 border-b border-border py-7 sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] sm:gap-8 sm:py-9">
-                <h3 className="text-xl font-semibold tracking-[-0.035em] text-foreground sm:text-2xl">
-                  Panel Discussions
-                </h3>
-                <p className="text-base leading-7 text-muted">
-                  Engineers share insights into how real systems are built and
-                  maintained.
-                </p>
-              </li>
-              <li className="grid gap-3 border-b border-border py-7 sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] sm:gap-8 sm:py-9">
-                <h3 className="text-xl font-semibold tracking-[-0.035em] text-foreground sm:text-2xl">
-                  Industry Field Visits
-                </h3>
-                <p className="text-base leading-7 text-muted">
-                  Students get direct exposure to R&D teams.
-                </p>
-              </li>
-              <li className="grid gap-3 py-7 sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] sm:gap-8 sm:py-9">
-                <h3 className="text-xl font-semibold tracking-[-0.035em] text-foreground sm:text-2xl">
-                  Conference Participation
-                </h3>
-                <p className="text-base leading-7 text-muted">
-                  Opportunities connected to developer and AI conferences.
-                </p>
-              </li>
-            </ul>
+            <div>
+              <ul className="border-y border-border">
+                <li className="grid gap-3 border-b border-border py-7 sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] sm:gap-8 sm:py-9">
+                  <h3 className="text-xl font-semibold tracking-[-0.035em] text-foreground sm:text-2xl">
+                    Panel Discussions
+                  </h3>
+                  <p className="text-base leading-7 text-muted">
+                    Engineers share insights into how real systems are built and
+                    maintained.
+                  </p>
+                </li>
+                <li className="grid gap-3 border-b border-border py-7 sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] sm:gap-8 sm:py-9">
+                  <h3 className="text-xl font-semibold tracking-[-0.035em] text-foreground sm:text-2xl">
+                    Industry Field Visits
+                  </h3>
+                  <p className="text-base leading-7 text-muted">
+                    Students get direct exposure to R&D teams.
+                  </p>
+                </li>
+                <li className="grid gap-3 py-7 sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] sm:gap-8 sm:py-9">
+                  <h3 className="text-xl font-semibold tracking-[-0.035em] text-foreground sm:text-2xl">
+                    Conference Participation
+                  </h3>
+                  <p className="text-base leading-7 text-muted">
+                    Opportunities connected to developer and AI conferences.
+                  </p>
+                </li>
+              </ul>
+              <Link
+                href="/activities"
+                className="mt-7 inline-flex min-h-10 items-center rounded-card border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-surface"
+              >
+                View all activity areas
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -241,6 +273,12 @@ export default function Home() {
               learning, building, collaboration, projects, events, and
               innovation.
             </p>
+            <Link
+              href="/about"
+              className="mt-7 inline-flex min-h-10 items-center rounded-card border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-surface"
+            >
+              Learn about the club
+            </Link>
           </div>
         </section>
       </Container>
