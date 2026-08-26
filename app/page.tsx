@@ -12,7 +12,7 @@ const council = [
   ["01", "President", "Rituraj Patil"],
   ["02", "Vice President", "Basil Shaikh"],
   ["03", "Secretary", "Aryan Vishwakarma"],
-  ["04", "Treasurer", "Angelina Pereira"],
+  ["04", "Treasurer", "Angelica Pereira"],
   ["05", "Internal Affairs", "Bhumika Khandelwal"],
 ];
 
