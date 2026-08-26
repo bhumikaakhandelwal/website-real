@@ -687,3 +687,35 @@ a {
     grid-template-columns: 1fr;
   }
 }
+.pillars-section .editorial-list article {
+  display: grid;
+  grid-template-columns: 40px 80px minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+}
+
+.pillar-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--secondary);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.pillar-content {
+  min-width: 0;
+}
+
+.pillar-content h3 {
+  margin: 0;
+}
+
+.pillar-content p {
+  max-width: 520px;
+  margin-top: 12px;
+}

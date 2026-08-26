@@ -164,37 +164,52 @@ export default function Home() {
 </div>
   </div>
 
-  <div className="editorial-list">
-    <article>
-      <small>01</small>
-      <div>
-        <h3>Explore</h3>
-        <p>
-          Students discover advanced tools and technologies.
-        </p>
-      </div>
-    </article>
+ <div className="editorial-list">
+  <article>
+    <small>01</small>
 
-    <article>
-      <small>02</small>
-      <div>
-        <h3>Build</h3>
-        <p>
-          Students build real systems and prototypes.
-        </p>
-      </div>
-    </article>
+    <div className="pillar-icon">
+      ◈
+    </div>
 
-    <article>
-      <small>03</small>
-      <div>
-        <h3>Compete</h3>
-        <p>
-          Students participate in national-level hackathons.
-        </p>
-      </div>
-    </article>
-  </div>
+    <div className="pillar-content">
+      <h3>Explore</h3>
+      <p>
+        Students discover advanced tools and technologies.
+      </p>
+    </div>
+  </article>
+
+  <article>
+    <small>02</small>
+
+    <div className="pillar-icon">
+      &lt;/&gt;
+    </div>
+
+    <div className="pillar-content">
+      <h3>Build</h3>
+      <p>
+        Students build real systems and prototypes.
+      </p>
+    </div>
+  </article>
+
+  <article>
+    <small>03</small>
+
+    <div className="pillar-icon">
+      ✦
+    </div>
+
+    <div className="pillar-content">
+      <h3>Compete</h3>
+      <p>
+        Students participate in national-level hackathons.
+      </p>
+    </div>
+  </article>
+</div>
   </section>
 <OpenChallenges />
       {/* HACKATHON */}
