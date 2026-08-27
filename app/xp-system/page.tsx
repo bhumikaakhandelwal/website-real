@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Container } from "../components/container";
-import { OrbitBadge } from "../components/orbit-badge-lazy";
+import { XPVisual } from "../components/xp-visual";
 import { Reveal } from "../components/reveal";
 import {
   leaderboardNote,
@@ -43,7 +43,7 @@ export default function XpSystemPage() {
               </p>
             </Reveal>
             <Reveal delay={120} className="mx-auto w-full max-w-xs">
-              <OrbitBadge glyph="gem" accent="#ff5a2b" />
+              <XPVisual />
             </Reveal>
           </div>
         </Container>
