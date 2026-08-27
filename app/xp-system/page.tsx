@@ -253,13 +253,14 @@ export default function XpSystemPage() {
               {rewards.map((reward) => (
                 <li
                   key={reward}
-                  className="flex items-center gap-4 rounded-panel border border-border bg-surface p-6"
+                  className="group flex items-center gap-4 rounded-panel border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:bg-accent/5"
+
                 >
                   <span
-                    className="h-2 w-2 shrink-0 rounded-full bg-accent"
+                    className="h-2 w-2 shrink-0 rounded-full bg-accent transition-transform duration-300 group-hover:scale-150"
                     aria-hidden="true"
                   />
-                  <span className="text-base font-medium text-foreground">
+                  <span className="text-base font-medium text-foreground transition-transform duration-300 group-hover:translate-x-1">
                     {reward}
                   </span>
                 </li>
@@ -287,6 +288,15 @@ export default function XpSystemPage() {
               keep the system fair for everyone building in good faith.
             </p>
           </Reveal>
+          <div className="mt-8 flex items-center justify-between">
+  <span className="font-mono text-xs uppercase tracking-[0.16em] text-ink-muted">
+    The other side of the ledger
+  </span>
+
+  <span className="font-mono text-xs text-accent">
+    − XP
+  </span>
+</div>
 
           <Reveal delay={80}>
             <div className="mt-10 overflow-hidden rounded-panel border border-ink-border">
