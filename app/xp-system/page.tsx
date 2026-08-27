@@ -80,30 +80,36 @@ export default function XpSystemPage() {
                 <span>XP awarded</span>
               </div>
               <ul>
-                {xpActivities.map((row, index) => (
-                  <li
-                    key={row.activity}
-                    className={`flex items-center justify-between border-t border-border px-5 py-4 sm:px-7 ${
-                      index % 2 === 1 ? "bg-surface/60" : ""
-                    }`}
-                  >
-                    <span className="text-sm text-foreground sm:text-base">
-                      {row.activity}
-                      {row.starred && (
-                        <span
-                          className="ml-1 text-accent-text"
-                          aria-hidden="true"
-                        >
-                          *
-                        </span>
-                      )}
-                    </span>
-                    <span className="font-mono text-sm font-semibold text-foreground sm:text-base">
-                      +{row.xp}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+  {xpActivities.map((row, index) => (
+    <li
+      key={row.activity}
+      className="group flex items-center justify-between border-t border-border px-5 py-5 transition-all duration-300 hover:bg-accent/5 sm:px-7"
+    >
+      <div className="flex items-center gap-5">
+        <span className="font-mono text-xs text-accent-text opacity-60">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+
+        <span className="text-sm text-foreground transition-transform duration-300 group-hover:translate-x-1 sm:text-base">
+          {row.activity}
+
+          {row.starred && (
+            <span
+              className="ml-1 text-accent-text"
+              aria-hidden="true"
+            >
+              *
+            </span>
+          )}
+        </span>
+      </div>
+
+      <span className="rounded-full border border-accent/40 bg-accent/10 px-3 py-1 font-mono text-sm font-semibold text-accent-text transition-all duration-300 group-hover:bg-accent group-hover:bg-accent/20 sm:text-base">
+        +{row.xp} XP
+      </span>
+    </li>
+  ))}
+</ul>
             </div>
             <p className="mt-4 max-w-none whitespace-nowrap text-xs leading-6 text-muted">
               <span className="text-accent-text">*</span> {xpActivityFootnote}
