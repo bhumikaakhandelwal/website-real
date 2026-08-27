@@ -24,13 +24,6 @@ const navigation = [
     {item.label}
   </Link>
 ))}
-/*<a 
-  href="https://github.com/DBCE-Coders-Club"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="transition-colors hover:text-accent"
->GitHub ↗
-</a>*/
 export function GlobalNavigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
