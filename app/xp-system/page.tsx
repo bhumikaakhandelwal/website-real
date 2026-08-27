@@ -143,42 +143,49 @@ export default function XpSystemPage() {
           </Reveal>
 
           <Reveal delay={80}>
-            <div className="mt-10 overflow-x-auto rounded-panel border border-border">
-              <table className="w-full min-w-[32rem] border-collapse text-left">
-                <thead>
-                  <tr className="bg-surface text-xs font-semibold uppercase tracking-[0.1em] text-muted">
-                    <th scope="col" className="px-5 py-3 sm:px-7">
-                      Level
-                    </th>
-                    <th scope="col" className="px-5 py-3 sm:px-7">
-                      XP required
-                    </th>
-                    <th scope="col" className="px-5 py-3 text-right sm:px-7">
-                      Title
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {xpLevels.map((level) => (
-                    <tr
-                      key={level.level}
-                      className="border-t border-border transition-colors hover:bg-surface/60"
-                    >
-                      <td className="px-5 py-4 text-sm text-foreground sm:px-7 sm:text-base">
-                        Level {level.level}
-                      </td>
-                      <td className="px-5 py-4 text-sm text-muted sm:px-7 sm:text-base">
-                        {level.xpRequired} XP
-                      </td>
-                      <td className="px-5 py-4 text-right text-sm font-semibold text-accent-text sm:px-7 sm:text-base">
-                        {level.title}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+  <div className="mt-10 grid gap-3">
+    {xpLevels.map((level, index) => (
+      <div
+        key={level.level}
+        className="group relative overflow-hidden rounded-panel border border-border bg-surface p-5 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 sm:p-6"
+      >
+        <div className="flex items-center gap-5">
+          {/* Level number */}
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-border font-mono text-sm text-accent-text transition-all duration-300 group-hover:border-accent group-hover:text-accent-foreground group-hover:text-accent-foreground">
+            {String(level.level).padStart(2, "0")}
+          </div>
+
+          {/* Main content */}
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-baseline justify-between gap-3">
+              <h3 className="text-lg font-semibold tracking-tight text-foreground">
+                {level.title}
+              </h3>
+
+              <span className="font-mono text-sm text-accent-text">
+                {level.xpRequired} XP
+              </span>
             </div>
-          </Reveal>
+
+            {/* progression line */}
+            <div className="mt-4 h-1 overflow-hidden rounded-full bg-border">
+              <div
+                className="h-full rounded-full bg-accent transition-all duration-700 group-hover:w-full"
+                style={{
+                  width: `${Math.min(100, 25 + index * 20)}%`,
+                }}
+              />
+            </div>
+          </div>
+
+          <span className="hidden text-muted transition-transform duration-300 group-hover:translate-x-1 sm:block">
+            →
+          </span>
+        </div>
+      </div>
+    ))}
+  </div>
+</Reveal>
         </Container>
       </section>
 
