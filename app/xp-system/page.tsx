@@ -105,7 +105,7 @@ export default function XpSystemPage() {
                 ))}
               </ul>
             </div>
-            <p className="mt-4 max-w-2xl text-xs leading-6 text-muted">
+            <p className="mt-4 max-w-none whitespace-nowrap text-xs leading-6 text-muted">
               <span className="text-accent-text">*</span> {xpActivityFootnote}
             </p>
           </Reveal>
