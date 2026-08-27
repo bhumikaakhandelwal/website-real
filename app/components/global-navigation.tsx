@@ -10,8 +10,8 @@ const navigation = [
   { label: "About", href: "/#about" },
   { label: "Activities", href: "/#activities" },
   { label: "Hackathon", href: "/#hackathon" },
+  { label: "Challenges", href: "/#open-challenges" },
   { label: "Leaderboard", href: "/leaderboard" },
-  { label: "Challenges", href: "/challenges" },
   { label: "XP System", href: "/xp-system" },
   { label: "GitHub" , href:"https://github.com/DBCE-Coders-Club"}
 ] as const;

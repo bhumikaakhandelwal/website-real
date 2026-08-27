@@ -212,7 +212,9 @@ export default function Home() {
   </article>
 </div>
   </section>
-<OpenChallenges />
+<div id="open-challenges">
+  <OpenChallenges />
+</div>
 <section id="hackathon">
       {/* HACKATHON */}
       <section className="dark-panel two-column-section">
