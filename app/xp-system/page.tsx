@@ -213,7 +213,8 @@ export default function XpSystemPage() {
           <ul className="mt-10 grid gap-5 sm:grid-cols-3">
             {leaderboardTypes.map((board, index) => (
               <Reveal key={board.title} delay={index * 80} as="li">
-                <div className="h-full rounded-panel border border-border p-6">
+                <div className="group relative h-full overflow-hidden rounded-panel border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50">
+                
                   <span className="font-mono text-xs text-muted">
                     0{index + 1}
                   </span>
