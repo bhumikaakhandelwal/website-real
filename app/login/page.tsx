@@ -1,22 +1,47 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useEffect} from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "motion/react";
 
 export default function LoginPage() {
   const router = useRouter();
+  const greeting = "Initializing session... Welcome back, Operator.";
+const [typedGreeting, setTypedGreeting] = useState("");
+const [loginSuccess, setLoginSuccess] = useState(false);
+
+useEffect(() => {
+  let index = 0;
+
+  const typingInterval = setInterval(() => {
+    setTypedGreeting(greeting.slice(0, index + 1));
+    index++;
+
+    if (index >= greeting.length) {
+      clearInterval(typingInterval);
+    }
+  }, 45);
+
+  return () => clearInterval(typingInterval);
+}, []);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = (e: FormEvent) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    // Keep your current login behaviour here.
-    // For now, clicking Login takes the user to Home.
-    router.push("/");
-  };
+  // Save login state
+  localStorage.setItem("dbce-logged-in", "true");
+
+  // Show ACCESS GRANTED animation
+  setLoginSuccess(true);
+
+  // Go to homepage after animation
+  setTimeout(() => {
+    router.replace("/");
+  }, 1800);
+};
 
   return (
     <main className="min-h-screen overflow-hidden bg-background px-4 py-6 md:px-8 md:py-8">
@@ -47,9 +72,11 @@ export default function LoginPage() {
               <h1 className="mt-6 max-w-md text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
                 Build.
                 <br />
-                Learn.
+                Break.
                 <br />
-                <span className="text-accent">Contribute.</span>
+                Learn.
+                <br/>
+                <span className="text-accent">Deploy.</span>
               </h1>
 
               <p className="mt-6 max-w-sm text-sm leading-6 text-primary-foreground/65 sm:text-base">
@@ -131,9 +158,14 @@ export default function LoginPage() {
 
               {/* Header */}
               <div className="mb-10">
-                <p className="label-eyebrow text-accent">
-                  WELCOME BACK
-                </p>
+                <div className="mb-6">
+  <p className="font-mono text-lg font-bold uppercase tracking-[0.18em] text-accent sm:text-xl">
+    {typedGreeting}
+    <span className="ml-1 inline-block animate-pulse font-bold text-accent">
+      █
+    </span>
+  </p>
+</div>
 
                 <h2 className="mt-4 text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
                   Log
@@ -148,74 +180,120 @@ export default function LoginPage() {
               </div>
 
               {/* FORM */}
-              <form onSubmit={handleLogin} className="space-y-7">
+              {/* FORM / ACCESS GRANTED */}
+{loginSuccess ? (
+  <motion.div
+    initial={{ opacity: 0, scale: 0.96 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.5 }}
+    className="flex min-h-[300px] flex-col items-center justify-center border border-accent/40 bg-accent/5 px-8"
+  >
+    <motion.div
+      initial={{ scale: 0.7, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{
+        duration: 0.5,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border-2 border-accent"
+    >
+      <motion.span
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+        className="text-2xl font-bold text-accent"
+      >
+        ✓
+      </motion.span>
+    </motion.div>
 
-                {/* Email */}
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="mb-3 block text-xs font-semibold tracking-[0.18em] text-foreground"
-                  >
-                    EMAIL
-                  </label>
+    <motion.p
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2 }}
+      className="font-mono text-2xl font-extrabold tracking-[0.2em] text-accent sm:text-3xl"
+    >
+      ACCESS GRANTED
+    </motion.p>
 
-                  <input
-                    id="email"
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="you@example.com"
-                    className="h-14 w-full border-b border-border bg-transparent px-0 text-lg outline-none transition-colors placeholder:text-muted-foreground/50 focus:border-accent"
-                  />
-                </div>
+    <motion.p
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.5 }}
+      className="mt-4 font-mono text-xs tracking-[0.15em] text-muted-foreground"
+    >
+      SESSION INITIALIZED _
+    </motion.p>
+  </motion.div>
+) : (
+  <form onSubmit={handleLogin} className="space-y-7">
 
-                {/* Password */}
-                <div>
-                  <label
-                    htmlFor="password"
-                    className="mb-3 block text-xs font-semibold tracking-[0.18em] text-foreground"
-                  >
-                    PASSWORD
-                  </label>
+    {/* Email */}
+    <div>
+      <label
+        htmlFor="email"
+        className="mb-3 block font-mono text-xs font-bold tracking-[0.2em] text-foreground"
+      >
+        EMAIL
+      </label>
 
-                  <input
-                    id="password"
-                    type="password"
-                    required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Enter your password"
-                    className="h-14 w-full border-b border-border bg-transparent px-0 text-lg outline-none transition-colors placeholder:text-muted-foreground/50 focus:border-accent"
-                  />
-                </div>
+      <input
+        id="email"
+        type="email"
+        required
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="operator@example.com"
+        className="h-14 w-full border-b border-border bg-transparent px-0 font-mono text-lg outline-none transition-colors placeholder:text-muted-foreground/40 focus:border-accent"
+      />
+    </div>
 
-                {/* Forgot password */}
-                <div className="flex justify-end">
-                  <button
-                    type="button"
-                    className="text-sm text-muted-foreground transition-colors hover:text-accent"
-                  >
-                    Forgot password?
-                  </button>
-                </div>
+    {/* Password */}
+    <div>
+      <label
+        htmlFor="password"
+        className="mb-3 block font-mono text-xs font-bold tracking-[0.2em] text-foreground"
+      >
+        PASSWORD
+      </label>
 
-                {/* Login button */}
-                <motion.button
-                  type="submit"
-                  whileHover={{ y: -3 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="group flex h-16 w-full items-center justify-between bg-primary px-6 text-base font-semibold text-primary-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
-                >
-                  <span>Login to DBCE Coders Club</span>
+      <input
+        id="password"
+        type="password"
+        required
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Enter access key"
+        className="h-14 w-full border-b border-border bg-transparent px-0 font-mono text-lg outline-none transition-colors placeholder:text-muted-foreground/40 focus:border-accent"
+      />
+    </div>
 
-                  <span className="text-xl transition-transform duration-300 group-hover:translate-x-2">
-                    →
-                  </span>
-                </motion.button>
+    {/* Forgot password */}
+    <div className="flex justify-end">
+      <button
+        type="button"
+        className="font-mono text-xs text-muted-foreground transition-colors hover:text-accent"
+      >
+        FORGOT ACCESS KEY?
+      </button>
+    </div>
 
-              </form>
+    {/* Login */}
+    <motion.button
+      type="submit"
+      whileHover={{ y: -3 }}
+      whileTap={{ scale: 0.98 }}
+      className="group flex h-16 w-full items-center justify-between bg-primary px-6 font-mono text-sm font-bold tracking-[0.08em] text-primary-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+    >
+      <span>INITIALIZE SESSION</span>
 
+      <span className="text-xl transition-transform duration-300 group-hover:translate-x-2">
+        →
+      </span>
+    </motion.button>
+
+  </form>
+)}
               {/* Bottom information */}
               <div className="mt-8 flex items-center justify-between border-t border-border pt-5">
                 <span className="font-mono text-[10px] tracking-[0.15em] text-muted-foreground">
