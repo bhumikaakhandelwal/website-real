@@ -25,6 +25,11 @@ const navigation = [
   </Link>
 ))}
 export function GlobalNavigation() {
+  const Pathname = usePathname();
+
+if (Pathname === "/login") {
+  return null;
+}
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
