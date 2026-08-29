@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import type { ReactNode } from "react";
+import { GlobalNavigation } from "./global-navigation";
+import { SiteFooter } from "./site-footer";
 
 export default function LoginGate({
   children,
@@ -36,5 +38,19 @@ export default function LoginGate({
     );
   }
 
-  return <>{children}</>;
+  // Login page gets NO navbar or footer
+  if (pathname === "/login") {
+    return <>{children}</>;
+  }
+
+  // All normal website pages get navbar + footer
+  return (
+    <>
+      <GlobalNavigation />
+
+      {children}
+
+      <SiteFooter />
+    </>
+  );
 }
